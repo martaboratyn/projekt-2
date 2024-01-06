@@ -1,7 +1,8 @@
 
 
+![Obraz2](https://github.com/martaboratyn/projekt-2/assets/151691738/51e096b0-c026-4817-9c85-a5f18c86fa2c)
 
-![diag](https://github.com/martaboratyn/projekt-2/assets/151691738/78610d4d-83de-48c2-a8b5-c7c68d4679cf)
+
 
 Zadanie 2 pragramistyczne dokumentacja:
 # Opis bazy
