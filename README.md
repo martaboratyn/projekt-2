@@ -6,7 +6,7 @@
 Zadanie 2 pragramistyczne dokumentacja:
 # Opis bazy
 
-Tabele w bazie:
+## Tabele w bazie:
 
 1.Pracownicy – spis pracowników firmy z uwzględnieniem ich wieku, stanowiska, płci i działu, w którym pracują
 
@@ -30,7 +30,7 @@ Tabele w bazie:
 
 11.Wydatki na sprzedaż 	z przypisaniem faktury do konkretnego wydatku.
 
-Założenia przyjęte w bazie:
+## Założenia przyjęte w bazie:
 
 1.Każdy pracownik może być odpowiedzialny za zamówienie sprzętu.
 
@@ -44,7 +44,7 @@ Założenia przyjęte w bazie:
 
 6.Każde zamówienie ma swoją fakturę.
 
-Klucze obce w bazie:
+## Klucze obce w bazie:
 
 1.Wydatek_id w tabeli faktury (1 – 1), każdy wydatek w tabeli jest przypisany do konkretnej faktury.
 
