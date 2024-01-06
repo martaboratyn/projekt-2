@@ -7,36 +7,36 @@ Zadanie 2 pragramistyczne dokumentacja:
 # Opis bazy
 
 Tabele w bazie:
-•	Pracownicy – spis pracowników firmy z uwzględnieniem ich wieku, stanowiska, płci i działu, w którym pracują
-•	Sprzęty -  nazwa sprzętu , oraz jego opis (json).
-•	Kategoria- spis kategorii, w które zostały usegregowane sprzęty.
-•	zamówienia z podaniem daty zamówienia i dostarczenia (typ datetimeoffset)
-•	Szczegóły zamówienia, które zawierają informację takie jak: jaki sprzęt został zamówiony, do którego działu, kto zamówi i  w jakiej ilości.
-•	Faktury-  spis faktur  z numerem, datą wystawienia oraz metodą płatności.
-•	Dostawcy - spis dostawców, wraz z numerem telefonu i adresami firm.
-•	Dział - spis oddziałów firmy z kolumnami takimi jak miasto, adres i numer.
-•	Inwentaryzacja, w której uwzględniamy liczbę danego sprzętu o danej dacie gwarancji i oddziale firmy.
-•	Cennik z cenami sprzętu używanego w firmie (cena – typ money).
-•	Wydatki na sprzedaż 	z przypisaniem faktury do konkretnego wydatku.
+	1.Pracownicy – spis pracowników firmy z uwzględnieniem ich wieku, stanowiska, płci i działu, w którym pracują
+	2.Sprzęty -  nazwa sprzętu , oraz jego opis (json).
+	3.Kategoria- spis kategorii, w które zostały usegregowane sprzęty.
+	4.zamówienia z podaniem daty zamówienia i dostarczenia (typ datetimeoffset)
+	5.Szczegóły zamówienia, które zawierają informację takie jak: jaki sprzęt został zamówiony, do którego działu, kto zamówi i  w jakiej ilości.
+	6.Faktury-  spis faktur  z numerem, datą wystawienia oraz metodą płatności.
+	7.Dostawcy - spis dostawców, wraz z numerem telefonu i adresami firm.
+	8.Dział - spis oddziałów firmy z kolumnami takimi jak miasto, adres i numer.
+	9.Inwentaryzacja, w której uwzględniamy liczbę danego sprzętu o danej dacie gwarancji i oddziale firmy.
+	10.Cennik z cenami sprzętu używanego w firmie (cena – typ money).
+	11.Wydatki na sprzedaż 	z przypisaniem faktury do konkretnego wydatku.
 Założenia przyjęte w bazie:
-•	Każdy pracownik może być odpowiedzialny za zamówienie sprzętu.
-•	Każdy sprzęt w bazie ma jedną cenę.
-•	Ten sam sprzęt może pochodzić od różnych dostawców.
-•	Pracownik może zamówić sprzęt do innego działu.
-•	Każde zamówienie uwzględnia tylko jeden typ sprzętu.
-•	Każde zamówienie ma swoją fakturę.
+	1.Każdy pracownik może być odpowiedzialny za zamówienie sprzętu.
+	2.Każdy sprzęt w bazie ma jedną cenę.
+	3.Ten sam sprzęt może pochodzić od różnych dostawców.
+	4.Pracownik może zamówić sprzęt do innego działu.
+	5.Każde zamówienie uwzględnia tylko jeden typ sprzętu.
+	6.Każde zamówienie ma swoją fakturę.
 Klucze obce w bazie:
-•	Wydatek_id w tabeli faktury (1 – 1), każdy wydatek w tabeli jest przypisany do konkretnej faktury.
-•	Faktura_id w szczegółach zamówienia (1 – 1), każda faktura jest przypisana konkretnemu zamówieniowi.
-•	Pracownik_id w szczegółach zamówienia (1-M), jeden pracownik może być odpowiedzialny za kilka zamówień.
-•	Zamówienie_id w szczegółach zamówienia (1-1), w tabeli zamówienia znajdują się daty zamówienia i dostarczenia konkretnego zamówienia.
-•	Dostawca_id w szczegółach zamówienia (1-M), jeden dostawca może mieć wiele zamówień.
-•	Dział_id w szczegółach zamówienia (1-M), każdy dział może mieć wiele zamówień.
-•	Dział_id w inwentaryzacji (1-M), każdy dział występuję w kilku inwentaryzacjach.
-•	Inwentaryzacja_id w tabeli sprzęt (1-M), sprzęt może wystąpić wiele razy w inwentaryzacjach.
-•	Cennik_id w tabeli sprzęt (1-1),  każdy sprzęt ma jedną cenę.
-•	Kategoria_id w tabei sprzęt(1-M), w jednej kategorii występuje wiele sprzętu.
-•	Sprzęt_id w tabeli szczegóły zamówienia(1-1), każde zamówienie uwzględnia jeden rodzaj sprzętu. 
+	1.Wydatek_id w tabeli faktury (1 – 1), każdy wydatek w tabeli jest przypisany do konkretnej faktury.
+	2.Faktura_id w szczegółach zamówienia (1 – 1), każda faktura jest przypisana konkretnemu zamówieniowi.
+	3.Pracownik_id w szczegółach zamówienia (1-M), jeden pracownik może być odpowiedzialny za kilka zamówień.
+	4.Zamówienie_id w szczegółach zamówienia (1-1), w tabeli zamówienia znajdują się daty zamówienia i dostarczenia konkretnego zamówienia.
+	5.Dostawca_id w szczegółach zamówienia (1-M), jeden dostawca może mieć wiele zamówień.
+	6.Dział_id w szczegółach zamówienia (1-M), każdy dział może mieć wiele zamówień.
+	7.Dział_id w inwentaryzacji (1-M), każdy dział występuję w kilku inwentaryzacjach.
+	8.Inwentaryzacja_id w tabeli sprzęt (1-M), sprzęt może wystąpić wiele razy w inwentaryzacjach.
+	9.Cennik_id w tabeli sprzęt (1-1),  każdy sprzęt ma jedną cenę.
+	10.Kategoria_id w tabei sprzęt(1-M), w jednej kategorii występuje wiele sprzętu.
+	11.Sprzęt_id w tabeli szczegóły zamówienia(1-1), każde zamówienie uwzględnia jeden rodzaj sprzętu. 
 
 #	Stworzenie bazy danych:
 
