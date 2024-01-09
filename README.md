@@ -317,40 +317,69 @@ where order_id = '6';
 ```
 # 	Procedura składowana
 ```
-create procedure GetProductsBySupplier
-    @supplierID INT
-AS
-BEGIN
-    SELECT equipment_id
-    FROM equipments
-    WHERE supplier_id = @supplierID
-END;
+create procedure UpdatePrice
+    @equipmentID int,
+    @PercentageChange decimal(5, 2),
+    @Min int
+as
+begin
+    declare @NewPrice decimal(10, 2)
+    declare @OrderQuantity int
+
+    select @OrderQuantity = COUNT(*)
+    from order_details
+    where equipment_id = @equipmentID
+
+   --warunek większa lub równa
+    if @OrderQuantity >= @Min
+    begin
+        select @NewPrice = price
+        from price_list
+        where equipment_id = @equipmentID
+
+        -- nowa cena
+        set @NewPrice = @NewPrice * (1 + @PercentageChange / 100)
+
+        update price_list
+        set price = @NewPrice
+        where equipment_id = @equipmentID
+		print 'Aktualizacja ceny została wykonana.'
+    end
+    else
+    begin
+        print 'Liczba produktów w zamówieniu jest mniejsza od minimalnej wymaganej. Brak aktualizacji ceny.'
+    end
+end
+
+exec UpdatePrice  @equipmentID=1, @PercentageChange=10, @Min=1
+
+exec UpdatePrice  @equipmentID=6, @PercentageChange=50, @Min=1
+
+exec UpdatePrice  @equipmentID=7, @PercentageChange=80, @Min=1
 ```
 
 # 	Niezbędne indeksy w bazie
 
 ```
-create index branch_id on employees (branch_id);
-
-create index supplier_id on equipments (supplier_id);
-
-create index price_list_id on equipments (price_list_id);
-
-create index equipment_id on inventories (equipment_id);
-
-create index branch_id on inventories (branch_id);
-
-create index invoice_id on invoices (invoice_id);
-
-create index employee_id on order_details (employee_id);
-
-create index invoice_id on order_details (invoice_id);
-
-create index supplier_id on order_details (supplier_id);
-
-create index branch_id on order_details (branch_id);
-
-create index equipment_id on orders (equipment_id);
-
-create index equipment_id on price_list (equipment_id);
+-- branches
+create nonclustered index bran on branches(city)
+-- categories
+create nonclustered index cat on categories(category)
+-- employees
+create nonclustered index emp_1 on employees(first_name)
+create nonclustered index emp_2 on employees(last_name)
+--eqiupments
+create nonclustered index equip on equipments(equipment_name)
+-- inventories
+create nonclustered index inven on inventories(warranty_expiration_date)
+--invoices
+create nonclustered index invo on invoices(issue_date)
+--order details
+create nonclustered index ord_det on order_details(equipment_id)
+--orders
+create nonclustered index ord on orders(order_date)
+--price list
+create nonclustered index price on price_list(price)
+--suppliers
+create nonclustered index supp on suppliers(company_name)
 ```
